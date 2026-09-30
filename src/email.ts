@@ -1,5 +1,5 @@
 // License-key delivery email. Optional: if RESEND_API_KEY is unset, delivery
-// is skipped (the /thanks page then points the buyer at support instead).
+// is skipped (the /thanks page still shows the buyer their key).
 export const sendLicenseEmail = async (
   to: string,
   licenseKey: string,
@@ -16,11 +16,12 @@ export const sendLicenseEmail = async (
     body: JSON.stringify({
       from,
       to,
-      subject: 'Your tldr Pro license key',
+      subject: 'Your tldr lifetime license key',
       html:
-        `<p>Thanks for going Pro! Your license key:</p>` +
-        `<p><code style="font-size:18px">${licenseKey}</code></p>` +
-        `<p>Paste it into the tldr extension settings to activate unlimited summaries.</p>`,
+        `<p>Thanks for buying tldr! Your lifetime license key:</p>` +
+        `<p><code style="font-size:18px;word-break:break-all">${licenseKey}</code></p>` +
+        `<p>Paste it into the tldr extension settings to unlock it. ` +
+        `Keep this email somewhere safe.</p>`,
     }),
   });
   if (!res.ok) {

@@ -2,3 +2,5 @@ node_modules/
 dist/
 *.db
 .env
+# Private license signing key. Never commit this.
+license-signing-key.pem
